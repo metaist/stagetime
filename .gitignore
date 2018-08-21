@@ -1,0 +1,5 @@
+*.sublime-*
+.nyc_output/*
+coverage/*
+node_modules/*
+release.sh

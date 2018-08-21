@@ -1,0 +1,55 @@
+{
+  "name": "stagetime",
+  "version": "0.1.0",
+  "description": "Show or hide DOM elements during a given time.",
+  "keywords": ["html"],
+  "license": "MIT",
+  "homepage": "https://github.com/metaist/stagetime",
+  "bugs": {
+    "url": "https://github.com/metaist/stagetime/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/metaist/stagetime.git"
+  },
+  "author": {
+    "name": "Metaist LLC",
+    "url": "metaist.com"
+  },
+  "main": "dist/stagetime",
+  "files": [
+    "package.json",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE.md",
+    "dist/"
+  ],
+  "scripts": {
+    "all": "yarn clean && yarn lint && yarn build && yarn coverage && yarn docs",
+    "clean": "rm -rf .nyc_output; rm -rf coverage; rm -rf dist; rm -rf docs",
+    "lint": "eslint build.js src/**/*.js test/**/*.js",
+    "build": "./build.js",
+    "test": "tape -r esm test/*.js | tap-summary",
+    "coverage": "nyc --require esm --reporter=html yarn test && nyc report",
+    "docs": "jsdoc -c jsdoc.json"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/lodash-es": "^4.17.0",
+    "docdash": "^0.4.0",
+    "eslint": "^4.19.1",
+    "esm": "^3.0.62",
+    "jquery": "^3.3.1",
+    "jsdoc": "^3.5.5",
+    "jsdom": "^11.10.0",
+    "jsdom-global": "^3.0.2",
+    "lodash-es": "^4.17.10",
+    "nyc": "^11.7.3",
+    "rollup": "^0.58.2",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-uglify": "^3.0.0",
+    "tap-summary": "^4.0.0",
+    "tape": "^4.9.0"
+  }
+}

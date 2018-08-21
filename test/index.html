@@ -1,0 +1,32 @@
+<!doctype html>
+<body>
+  <style>.stagetime-off { display: none; }</style>
+
+  <div id="msg1">This message will disappear shortly.</div>
+  <div id="msg2">This message will appear after a few moments and stay.</div>
+  <div id="msg3">This message will appear and then disappear.</div>
+
+  <script>
+    const t_now = new Date().getTime();
+    const times = [
+      {until: t_now + (2.0 * 1000)},
+      {after: t_now + (2.5 * 1000)},
+      {after: t_now + (3.5 * 1000), until: t_now + (5.5 * 1000)}
+    ];
+
+    times.forEach((time, idx) => {
+      const el = document.querySelector(`#msg${idx + 1}`);
+      if (time.until) {
+        const until = new Date(time.until).toISOString();
+        el.setAttribute('data-stagetime-until', until);
+      }
+
+      if (time.after) {
+        const after = new Date(time.after).toISOString();
+        el.setAttribute('data-stagetime-after', after);
+      }
+    });
+  </script>
+
+  <script src="../dist/stagetime.js"></script>
+</body>
