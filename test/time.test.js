@@ -22,21 +22,20 @@ test('time.parseDate', (t) => {
 
 
   a = parseTime('2018-08-21');
-  b = 1534824000000;
-  t.same(a, b, 'expect date from string (no time)');
+  b = new Date(2018, 8 - 1, 21).getTime();
+  t.same(a, b, 'expect date from string (local date)');
 
   a = parseTime('2018-08-21T05:45');
-  b = 1534844700000;
+  b = new Date(2018, 8 - 1, 21, 5, 45).getTime();
   t.same(a, b, 'expect date from string (local time)');
 
   a = parseTime('2018-08-21T05:45:12.345');
-  b = 1534844712345;
+  b = new Date(2018, 8 - 1, 21, 5, 45, 12, 345).getTime();
   t.same(a, b, 'expect date from string (local time with ms)');
 
   a = parseTime('2018-08-21T05:45Z');
-  b = 1534830300000;
+  b = Date.UTC(2018, 8 - 1, 21, 5, 45);
   t.same(a, b, 'expect date from string (UTC)');
-
 
   t.end();
 });
